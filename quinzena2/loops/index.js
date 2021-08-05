@@ -61,7 +61,7 @@ console.log(imprimeArrayPar(arrayOriginal))
 for (let indice of arrayOriginal) {
     let posicao = arrayOriginal.indexOf(indice)
     let numero = indice.valueOf(posicao)
-    console.log(`O elemento do índex ${arrayOriginal.indexOf(indice) + 1} é: ${numero}`)
+    console.log(`O elemento do índex ${posicao + 1} é: ${numero}`)
 }
 
 
