@@ -63,7 +63,6 @@ for (let valor of arrayOriginal) {
     console.log(`O elemento do índex ${posicao + 1} é: ${valor}`)
 }
 
-
 //     e) Escreva um programa que imprima no console o maior e o menor números contidos no array original
 function retornaMaiorValorArray(array) {
     let maiorNumero = 0
