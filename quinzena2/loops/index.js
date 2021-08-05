@@ -58,10 +58,9 @@ console.log(imprimeArrayPar(arrayOriginal))
 // d) Escreva um programa que **crie** um novo array contendo strings, da seguinte forma: "O elemento 
 // do índex `i` é: `numero`". Depois, **imprima** este novo array.
 
-for (let indice of arrayOriginal) {
-    let posicao = arrayOriginal.indexOf(indice)
-    let numero = indice.valueOf(posicao)
-    console.log(`O elemento do índex ${posicao + 1} é: ${numero}`)
+for (let valor of arrayOriginal) {
+    let posicao = arrayOriginal.indexOf(valor)
+    console.log(`O elemento do índex ${posicao + 1} é: ${valor}`)
 }
 
 
