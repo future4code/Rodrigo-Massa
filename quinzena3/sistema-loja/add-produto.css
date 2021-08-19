@@ -1,0 +1,32 @@
+body {
+    background-image: linear-gradient(to bottom right, lightskyblue, white);
+}
+
+#logo-loja {
+    display: inline-block;
+    font-size: 30px;
+    margin-top: -37px;
+    margin-left: 20px;
+}
+
+.menu {
+    display: inline-block;
+    margin-left: 51px;
+}
+
+.icone-menu {
+    margin: 5px;
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
+}
+
+#titulo-form {
+    margin-top: 10%;
+    margin-left: 40%;
+}
+
+#formulario {
+    margin-left: 35%;
+    margin-bottom: 19%;
+}
