@@ -1,0 +1,46 @@
+/* cabecalho
+#logo-loja
+.menu
+.icone-menu
+.funcionarios
+#titulo
+.nome-funcionario */
+
+#logo-loja {
+    display: inline-block;
+    font-size: 30px;
+    margin-top: -37px;
+    margin-left: 20px;
+}
+
+.menu {
+    display: inline-block;
+    margin-left: 51px;
+}
+
+.icone-menu {
+    margin: 5px;
+    font-size: 25px;
+    text-decoration: none;
+    color: black;
+}
+
+.funcionarios {
+    display: block;
+    margin-top: 5%;
+    margin-bottom: 15.6%;
+    margin-left: 20%;
+}
+
+#titulo{
+    font-size: 40px;
+}
+
+#nome-funcionario {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+body {
+    background-image: linear-gradient(to bottom right, lightskyblue, white);
+}
