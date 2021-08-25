@@ -111,6 +111,7 @@ table {
 }
 
 td button {
+    font-size: 16px;
     background-color: #fadf63;
     width: 150px;
     height: 30px;
@@ -118,13 +119,21 @@ td button {
     color: black;
 }
 
+td button:hover {
+    background-color: #c2ac4d;
+}
+
+td button:active {
+    color: white;
+}
+
 .container-do-search {
     margin-top: 20px;
     height: 100px;
 }
 
-
 #back-button {
+    
     background-color: white;
     width: 100px;
     height: 20px;
@@ -134,8 +143,10 @@ td button {
     color: black;
     display: block;
     margin: auto;
+    margin-top: 10%;
 }
 
 #back-button:hover {
-    background-color: #635a3d
+    background-color: ivory;
+    border-color: red;
 }
