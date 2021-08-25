@@ -45,7 +45,7 @@ div img {
     font-size: 20px;
     color: white;
     display: block;
-    margin: auto;
+    margin: 70px auto;
 }
 
 .botao-amarelo:hover {
@@ -53,7 +53,7 @@ div img {
 }
 
 .container {
-    height: 500px;
+    height: 260px;
     text-align: center;
 }
 
@@ -81,6 +81,7 @@ div img {
 
 #container-para-comprar {
     background-color: #e7eb90;
+    padding-top: 50px;
 }
 
 #container-para-comprar>p {
@@ -102,8 +103,8 @@ div:last-child {
 }
 
 table {
+    text-align: center;
     width: 60%;
-    /* margin: auto; */
     margin-left: 24%;
 }
 
