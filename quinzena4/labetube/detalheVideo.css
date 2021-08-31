@@ -26,6 +26,10 @@ header {
     height: 25px;
 }
 
+header h2 {
+    text-decoration: none;
+}
+
 /* MAIN */
 main {
     display: flex;
@@ -51,6 +55,7 @@ video {
 /* FOOTER */
 
 footer {
+    font-size: 8px;
     background-color: rgb(54, 54, 54);
     color: white;
     min-height: 50px;
