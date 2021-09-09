@@ -1,0 +1,94 @@
+/* ESTILO GERAL */
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+
+header {
+    min-height: 50px;
+    width: auto;
+    background-color: mediumvioletred;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 3vh;
+    align-items: center;
+}
+
+header > h2 {
+    margin-right: 84%;
+}
+
+header > img {
+    height: 20px;
+    padding-bottom: 5px;
+}
+
+/* MAIN */
+
+main {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+/* MENU LATERAL */
+
+#left-menu {
+    padding-top: 2%;
+    height: 100vh;
+    width: 300px;
+    background-color: #f2d0e0;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2%;
+}
+
+#menu-list img {
+    max-height: 18px;
+    padding-top: 15px;
+    padding-right: 8px;
+}
+
+/* PRODUTOS */
+
+#products {
+    text-align: center;
+    display: grid;
+    margin: 10px 40px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 20px;
+    column-gap: 20px;
+}
+
+#products img {
+    max-height: 240px;
+    max-width: 240px;
+}
+
+#products h3 {
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+/* RODAPE */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: mediumvioletred;
+    height: 50px;
+    margin-top: 10px;
+}
