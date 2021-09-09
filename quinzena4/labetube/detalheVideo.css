@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.page-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+
+header {
+    background-color: orange;
+    height: 60px;
+    padding: 0 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#busca {
+    width: 250px;
+    height: 25px;
+}
+
+header h2 {
+    text-decoration: none;
+}
+
+/* MAIN */
+main {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 100px;
+}
+
+.container-main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-main h2 {
+    padding-bottom: 15px;
+}
+
+video {
+    min-width: 50vw;
+    max-width: 90vw;
+}
+
+/* FOOTER */
+
+footer {
+    font-size: 8px;
+    background-color: rgb(54, 54, 54);
+    color: white;
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
