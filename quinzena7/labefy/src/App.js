@@ -31,6 +31,13 @@ const TracksDiv = styled.div`
   align-items: center;
 `;
 
+const SongDiv = styled.div`
+  border: 1px solid yellow;
+  display: flex;
+  width: 30vw;
+  justify-content: space-between;
+`;
+
 const url = "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists"
 
 const headers = {
@@ -47,6 +54,7 @@ export default class App extends React.Component {
     playlistDetail: '',
     playlistTracks: [],
     playlist: '',
+    addPlaylist: true
   }
 
   componentDidMount() {
@@ -117,14 +125,27 @@ export default class App extends React.Component {
 
     const tracks = this.state.playlistTracks.map((track) => {
       return (
-        <div key={track.id}>
+        <SongDiv key={track.id}>
           <p> {track.name} </p>
           <p> {track.artist} </p>
           <button> Play </button>
           <button> X </button>
-        </div>
+        </SongDiv>
       )
     })
+
+    let renderAddTrack
+
+    if(this.state.addPlaylist) {
+      renderAddTrack = 
+        <div>
+          <input 
+            placeholder="Nome da Música" 
+            value={this.props.playlistName}
+            onChange={this.props.fieldChange}/>
+          <button onClick={() => this.props.createPlaylist()}> Add Playlist </button>
+        </div>
+    }
 
 
     return (
@@ -145,6 +166,7 @@ export default class App extends React.Component {
             <div>
               <h2> Músicas </h2>
             </div>
+            {renderAddTrack}
             {tracks}
           </TracksDiv>
         </Main>

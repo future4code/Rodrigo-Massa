@@ -37,7 +37,7 @@ export default class Playlists extends React.Component {
 
     const playlists = this.props.allPlaylists.map((playlist) => {
       return (
-        <PlaylistDiv key={playlist.id} onClick={() => this.props.getTracks(playlist.id)}>
+        <PlaylistDiv key={playlist.id} onClick={() => this.props.getTracks(playlist)}>
           {playlist.name}
           <button onClick={() => this.props.deletePlaylist(playlist.id)}> X </button>
         </PlaylistDiv>
