@@ -6,7 +6,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 gap: 5vh;
-border: 1px solid black;
+/* border: 1px solid black; */
 
 `;
 
