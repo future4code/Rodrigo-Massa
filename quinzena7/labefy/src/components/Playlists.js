@@ -1,7 +1,7 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import styled from 'styled-components';
-import Tracks from './Tracks';
+// import Tracks from './Tracks';
 
 
 const MainDiv = styled.div`

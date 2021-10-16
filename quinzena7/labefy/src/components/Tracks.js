@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import styled from 'styled-components';
 
 
@@ -11,11 +11,11 @@ const MainDiv = styled.div`
   align-items: center;
 `;
 
-const TrackDiv = styled.div`
-  border: 1px solid red;
-  display: flex;
-  height: 50vh;
-`;
+// const TrackDiv = styled.div`
+//   border: 1px solid red;
+//   display: flex;
+//   height: 50vh;
+// `;
 
 
 export default class Tracks extends React.Component {

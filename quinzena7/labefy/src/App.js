@@ -38,6 +38,11 @@ const SongDiv = styled.div`
   justify-content: space-between;
 `;
 
+const AddTrack = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const url = "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists"
 
 const headers = {
@@ -54,7 +59,12 @@ export default class App extends React.Component {
     playlistDetail: '',
     playlistTracks: [],
     playlist: '',
-    addPlaylist: true
+    addPlaylist: true,
+    addTrack: true,
+    trackName: '',
+    artistName: '',
+    trackUrl: '',
+    trackId: '',
   }
 
   componentDidMount() {
@@ -63,6 +73,7 @@ export default class App extends React.Component {
 
   componentDidUpdate() {
     this.getPlaylists()
+    // this.getTracks()
   }
 
   getPlaylists = () => {
@@ -106,6 +117,10 @@ export default class App extends React.Component {
     this.setState({ playlistName: e.target.value })
   }
 
+  handleFieldChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value})
+  }
+
   getTracks = (playlist) => {
     axios
       .get(`${url}/${playlist.id}/tracks`, headers)
@@ -121,30 +136,84 @@ export default class App extends React.Component {
       })
   }
 
+  addTrackConfirmation = () => {
+    this.setState({ addTrack: !this.state.addTrack })
+  }
+
+  addTrackToPlaylist = (playlist) => {
+    const body = {
+      name:this.state.trackName,
+      artist:this.state.artistName,
+      url:this.state.trackUrl,      
+  }
+
+    axios
+      .post(`${url}/${playlist.id}/tracks`, body, headers)
+      .then((res) => {
+        this.setState({
+          addTrack: false,
+          trackName: '',
+          artistName: '',
+          trackUrl: '',
+        })
+        this.getTracks(playlist)
+      })
+      .catch((err) => console.log(err))
+  }
+
+  deleteTrack = (trackId) => {
+    let confirmation = window.confirm("Tem certeza que deseja excluir esta faixa?")
+
+    if (confirmation) {
+      axios
+        .delete(`${url}/${this.state.playlist.id}/tracks/${trackId}`, headers)
+        .then((res) => {
+          alert('Faixa deletada!')
+          this.getTracks(this.state.playlist)
+        })
+        .catch((err) => console.log(err))
+    }
+  }
+
   render() {
 
     const tracks = this.state.playlistTracks.map((track) => {
       return (
         <SongDiv key={track.id}>
+          <div>
           <p> {track.name} </p>
           <p> {track.artist} </p>
+          </div>
+          <div>
           <button> Play </button>
-          <button> X </button>
+          <button onClick={() => this.deleteTrack(track.id)}> X </button>
+          </div>
         </SongDiv>
       )
     })
 
     let renderAddTrack
 
-    if(this.state.addPlaylist) {
+    if(this.state.addTrack) {
       renderAddTrack = 
-        <div>
+        <AddTrack>
           <input 
-            placeholder="Nome da Música" 
-            value={this.props.playlistName}
-            onChange={this.props.fieldChange}/>
-          <button onClick={() => this.props.createPlaylist()}> Add Playlist </button>
-        </div>
+            name="trackName"
+            placeholder="Nome da música" 
+            value={this.state.trackName}
+            onChange={this.handleFieldChange}/>
+            <input 
+            name="artistName"
+            placeholder="Nome do artista" 
+            value={this.state.artistName}
+            onChange={this.handleFieldChange}/>
+            <input 
+            name="trackUrl"
+            placeholder="URL da música" 
+            value={this.state.trackUrl}
+            onChange={this.handleFieldChange}/>
+          <button onClick={() => this.addTrackToPlaylist(this.state.playlist)}> Add Track </button>
+        </AddTrack>
     }
 
 
@@ -165,6 +234,7 @@ export default class App extends React.Component {
           <TracksDiv>
             <div>
               <h2> Músicas </h2>
+              <button onClick={() => this.addTrackConfirmation()}> Adicionar Música </button>
             </div>
             {renderAddTrack}
             {tracks}
