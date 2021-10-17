@@ -3,45 +3,166 @@ import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import Playlists from './components/Playlists';
-// import Tracks from './components/Tracks';
 
-
+//CSS
 const MainDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* align-items: center; */
   margin: auto;
   width: 100vw;
   height: 100vh;
-  border: 1px solid red;
 `;
 
 const Main = styled.main`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  height: 70vh;
+  background-color: #191414;
+  color: white;
 `;
 
 const TracksDiv = styled.div`
-  border: 1px solid green;
+  border-top: 1px groove gray;
+  background-image: linear-gradient(to top, #191414 0%, #1db954 900%);
   flex-grow: 4;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1vh;
 `;
 
 const SongDiv = styled.div`
-  border: 1px solid yellow;
   display: flex;
   width: 30vw;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const AddTrack = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 1px;
 `;
+
+const Header = styled.header`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
+  background-color: #191414;
+  color: #1DB954;
+  font-weight: bold;
+  font-size: 2em;
+`;
+
+const Footer = styled.footer`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  background-color: black;
+  color: white;
+`;
+
+const PlayerDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  background-color: #191414;
+  color: #1DB954;
+  border-top: 0.5px groove gray;
+`;
+
+const H2Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2vh;
+`;
+
+const AddNewSongDiv = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1vh;
+  margin-bottom: 5vh;
+`;
+
+const AddNewTrack = styled.button`
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  height: 5vh;
+  width: 5vh;
+`;
+
+const AddNewTrackButton = styled.button`
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+`;
+
+const H2 = styled.h2`
+  margin-top: 4vh;
+  font-size: 2em;
+`;
+
+const TrackNameDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+`;
+
+const TrackNameP = styled.p`
+  font-size: 1.5em;
+`;
+
+const ArtistNameP = styled.p`
+  color: #1DB954;
+`;
+
+const TrackButtons = styled.div`
+  display: flex;
+  gap: 2vh;
+`;
+
+const PlayButton = styled.button`
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  height: 5vh;
+  padding: 0 1vh;
+`;
+
+const DeleteButton = styled.button`
+  background-color: red;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  height: 5vh;
+  width: 5vh;
+`;
+
+
+//CONSTANTES
 
 const url = "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists"
 
@@ -59,8 +180,8 @@ export default class App extends React.Component {
     playlistDetail: '',
     playlistTracks: [],
     playlist: '',
-    addPlaylist: true,
-    addTrack: true,
+    addPlaylist: false,
+    addTrack: false,
     trackName: '',
     artistName: '',
     trackUrl: '',
@@ -180,14 +301,14 @@ export default class App extends React.Component {
     const tracks = this.state.playlistTracks.map((track) => {
       return (
         <SongDiv key={track.id}>
-          <div>
-          <p> {track.name} </p>
-          <p> {track.artist} </p>
-          </div>
-          <div>
-          <button> Play </button>
-          <button onClick={() => this.deleteTrack(track.id)}> X </button>
-          </div>
+          <TrackNameDiv>
+          <TrackNameP> {track.name} </TrackNameP>
+          <ArtistNameP> {track.artist} </ArtistNameP>
+          </TrackNameDiv>
+          <TrackButtons>
+          <PlayButton> Play </PlayButton>
+          <DeleteButton onClick={() => this.deleteTrack(track.id)}> X </DeleteButton>
+          </TrackButtons>
         </SongDiv>
       )
     })
@@ -212,14 +333,15 @@ export default class App extends React.Component {
             placeholder="URL da música" 
             value={this.state.trackUrl}
             onChange={this.handleFieldChange}/>
-          <button onClick={() => this.addTrackToPlaylist(this.state.playlist)}> Add Track </button>
+          <AddNewTrackButton 
+            onClick={() => this.addTrackToPlaylist(this.state.playlist)}> Adicionar Música </AddNewTrackButton>
         </AddTrack>
     }
 
 
     return (
       <MainDiv>
-        <header> Header </header>
+        <Header> Labefy </Header>
         <Main> 
           <Playlists 
             allPlaylists={this.state.allPlaylists}
@@ -232,15 +354,19 @@ export default class App extends React.Component {
             getTracks={this.getTracks}
           />
           <TracksDiv>
-            <div>
-              <h2> Músicas </h2>
-              <button onClick={() => this.addTrackConfirmation()}> Adicionar Música </button>
-            </div>
+            <H2Div>
+              <H2> Músicas </H2>
+              <AddNewSongDiv>
+                <p> Adicionar Música </p>
+                <AddNewTrack onClick={() => this.addTrackConfirmation()}> + </AddNewTrack>
+              </AddNewSongDiv>
+            </H2Div>
             {renderAddTrack}
             {tracks}
           </TracksDiv>
         </Main>
-        <footer> Footer </footer>
+        <PlayerDiv> Player </PlayerDiv>
+        <Footer> Desenvolvido por Rodrigo Massa </Footer>
       </MainDiv>
     )
   }

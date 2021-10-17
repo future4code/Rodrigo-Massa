@@ -5,21 +5,58 @@ import styled from 'styled-components';
 
 
 const MainDiv = styled.div`
-  border: 1px solid black;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 85vh;
+  height: 70vh;
   max-height: 86vh;
+  background-color: black;
+  color: white;
+  gap: 2vh;
+  padding-top: 5vh;
 `;
 
 const PlaylistDiv = styled.div`
   display: flex;
-  border: 1px solid red;
+  color: white;
   width: 10vw;
-  margin: 1vh 0;
+  margin: 2vh 0;
   justify-content: space-between;
+  align-items: center;
+`;
+
+const DivNewPlaylist = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1vh;
+`;
+
+const NewPlaylist = styled.button`
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  /* padding: 20px; */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  height: 5vh;
+  width: 5vh;
+`;
+
+const DeletePlaylist = styled.button`
+  background-color: red;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  height: 3vh;
+  width: 3vh;
 `;
 
 
@@ -39,7 +76,7 @@ export default class Playlists extends React.Component {
       return (
         <PlaylistDiv key={playlist.id} onClick={() => this.props.getTracks(playlist)}>
           {playlist.name}
-          <button onClick={() => this.props.deletePlaylist(playlist.id)}> X </button>
+          <DeletePlaylist onClick={() => this.props.deletePlaylist(playlist.id)}> X </DeletePlaylist>
         </PlaylistDiv>
       )
     })
@@ -48,13 +85,13 @@ export default class Playlists extends React.Component {
 
     if(this.state.addPlaylist) {
       renderAddPlaylist = 
-        <div>
+        <DivInputPlaylist>
           <input 
             placeholder="Nome da Playlist" 
             value={this.props.playlistName}
             onChange={this.props.fieldChange}/>
-          <button onClick={() => this.props.createPlaylist()}> Add Playlist </button>
-        </div>
+          <AddPlaylistButton onClick={() => this.props.createPlaylist()}> Add Playlist </AddPlaylistButton>
+        </DivInputPlaylist>
     }
 
     return (
@@ -62,10 +99,13 @@ export default class Playlists extends React.Component {
         <div>
           <h2> Playlists </h2>
         </div>
-        <div>
-          <button onClick={this.addPlaylistConfirmation}> Add Playlist </button>
+        <DivNewPlaylist>
+          <NewPlaylistOutDiv>
+          <p> Adicionar Playlist </p>
+          <NewPlaylist onClick={this.addPlaylistConfirmation}> + </NewPlaylist>
+          </NewPlaylistOutDiv>
           {renderAddPlaylist}
-        </div>
+        </DivNewPlaylist>
         <div>
           {playlists}
         </div>
@@ -73,3 +113,24 @@ export default class Playlists extends React.Component {
     )
   }
 }
+
+const NewPlaylistOutDiv = styled.div`
+  display: flex;
+  gap: 2vh;
+`;
+
+const DivInputPlaylist = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+`;
+
+const AddPlaylistButton = styled.button`
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+`;
