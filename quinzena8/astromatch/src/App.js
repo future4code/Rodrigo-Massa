@@ -13,7 +13,6 @@ function App() {
   return (
     <MainDiv>
       <ContainerApp />
-      
     </MainDiv>
   );
 }
