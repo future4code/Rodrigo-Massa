@@ -19,6 +19,16 @@ const ContainerDiv = styled.div`
     background-color: #fff;
 `;
 
+const Header = styled.div`
+    height: 80px;
+    width: 375px;
+    display: flex;
+    gap: 10vw;
+    align-items: center;
+    justify-content: space-evenly;
+    border-bottom: 1px groove gray;
+`;
+
 const ContainerApp = () => {
 
     const [profile, setProfile] = useState([])
@@ -76,11 +86,12 @@ const ContainerApp = () => {
 
     return (
         <ContainerDiv>
-            <header> Header
+            <Header> 
+                <h2> AstroMatch </h2>
                 <button onClick={changePage}> Matches </button>
-            </header>
+            </Header>
             <div>{renderPage()}</div>
-            <footer> Footer </footer>
+            <footer> </footer>
         </ContainerDiv>
     );
 }
