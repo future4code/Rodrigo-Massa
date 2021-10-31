@@ -12,6 +12,7 @@ const DivProfile = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 `;
 
 const DivNoMatches = styled.div`
@@ -33,6 +34,29 @@ const ButtonReset = styled.button`
     :hover {
         background-color: red;
     }
+`;
+
+const Buttons = styled.span`
+    display: flex;
+    gap: 60px;
+`;
+
+const ButtonLike = styled.button`
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: none;
+    background-color: green;
+    color: white;
+`;
+
+const ButtonDislike = styled.button`
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: none;
+    background-color: red;
+    color: white;
 `;
 
 const Profiles = (props) => {
@@ -76,12 +100,12 @@ const Profiles = (props) => {
                 ) : (
                     <DivProfile>
                         <Image src={props.profile.photo}></Image>
-                        <p>{props.profile.name}, {props.profile.age}</p>
+                        <p><b>{props.profile.name}</b>, {props.profile.age}</p>
                         <p> {props.profile.bio} </p>
-                        <span>
-                            <button onClick={() => dislikeProfile(props.profile.id)}> X </button>
-                            <button onClick={() => likeProfile(props.profile.id)}> M </button>
-                        </span>
+                        <Buttons>
+                            <ButtonDislike onClick={() => dislikeProfile(props.profile.id)}> X </ButtonDislike>
+                            <ButtonLike onClick={() => likeProfile(props.profile.id)}> M </ButtonLike>
+                        </Buttons>
                     </DivProfile>
                 )
 

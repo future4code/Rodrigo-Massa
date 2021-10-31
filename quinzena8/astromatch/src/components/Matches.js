@@ -8,10 +8,14 @@ import { useEffect } from 'react/cjs/react.development';
 const DivMatchesContainer = styled.div`
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     overflow-y: scroll ;
-    /* overflow: hidden; */
     max-height: 500px;
+    scrollbar-width: none; //Esconder barra scroll no Firefox
+    -ms-overflow-style: none; //Esconder barra scroll no IE e Edge
+    ::-webkit-scrollbar { //Esconder barra scroll no Chrome, Safari e Opera
+        display: none;
+    }
+
 `;
 
 const DivMatches = styled.div`
@@ -22,15 +26,16 @@ const DivMatches = styled.div`
 `;
 
 const Image = styled.img`
-    max-height: 80px;
-    max-width: 80px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
 `;
 
 const ButtonReset = styled.button`
     height: 80px;
     width: 80px;
-    border-radius: 30px;
-    margin-left: 87px;
+    border-radius: 50px;
+    /* margin-left: 87px; */
     border: none;
     background-color: green;
     color: white;

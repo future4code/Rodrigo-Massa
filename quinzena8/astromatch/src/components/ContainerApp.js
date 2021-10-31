@@ -29,6 +29,15 @@ const Header = styled.div`
     border-bottom: 1px groove gray;
 `;
 
+const ButtonMatches = styled.button`
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: none;
+    background-color: green;
+    color: white;
+`;
+
 const ContainerApp = () => {
 
     const [profile, setProfile] = useState([])
@@ -88,7 +97,7 @@ const ContainerApp = () => {
         <ContainerDiv>
             <Header> 
                 <h2> AstroMatch </h2>
-                <button onClick={changePage}> Matches </button>
+                <ButtonMatches onClick={changePage}> Matches </ButtonMatches>
             </Header>
             <div>{renderPage()}</div>
             <footer> </footer>
