@@ -11,14 +11,14 @@ const AppDiv = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
-border: 1px solid red;
+/* border: 1px solid red; */
 `;
 
 const DivHeader = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
-border: 1px solid black;
+/* border: 1px solid black; */
 `;
 
 const Button = styled.button`
@@ -126,7 +126,7 @@ deleteUser = () => {
 // TELAS
 
 componentDidMount = () => {
-  this.setState ({ userPage: false });
+  this.setState ({ userPage: true });
   this.setState ({ userIDRemoval: "" })
   this.getUsersList();
 }
