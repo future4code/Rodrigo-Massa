@@ -8,13 +8,13 @@ const HeaderDiv = styled.div`
     justify-content: center;
     align-items: center;
     /* background-color: gray; */
-    margin-bottom: 20vh;
+    margin-bottom: 10vh;
 `;
 
 const Header = () => {
     return (
         <HeaderDiv>
-            <p> Header </p>
+            <p> LabeX </p>
         </HeaderDiv>
     )
 };

@@ -2,12 +2,10 @@ import './App.css';
 import Main from './components/Main';
 
 
-const App = () => {
+export default function App() {
   return (
     <div>
       <Main />
     </div>
   );
-}
-
-export default App;
+};
